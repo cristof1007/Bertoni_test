@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Bertoni_test.Models.Albums>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Albums</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.ActionLink("View Photos", "Index", "Photos", new { id = item.id }, new { @class = "navbar-brand" })
+
+        </td>
+    </tr>
+}
+
+</table>

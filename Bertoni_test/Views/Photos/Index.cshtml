@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Bertoni_test.Models.Photos>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Photos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.albumId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thumbnailUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.albumId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+			<img src="@Html.DisplayFor(modelItem => item.thumbnailUrl)" alt="Alternate Text" /> 
+        </td>
+        <td>
+            <button class="btn-block success load-comments">View Comments</button>
+            @Html.ActionLink("View Comments", "Index", "Comments", new { id = item.id }, new { @class = "navbar-brand" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+	$(".load-comment").click(function (e) {
+		alert("asdasd");
+	});
+</script>
